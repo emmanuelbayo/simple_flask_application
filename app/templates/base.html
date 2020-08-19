@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {% if title %}
+        <title>Simple Flask App-{{ title }}</title>
+    {% else %}
+        <title>Simple Flask Application</title>
+    {% endif %}
+    <link rel="shortcut icon" href="{{ url_for('static', filename='image/flask-icon.png')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+</head>
+<body>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark navbar-laravel mb-5">
+        <div class="container">
+            <a href="{{ url_for('home.login') }}" class="navbar-brand">
+                Flask App
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                <span class="sr-only">Flask</span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    {% if session %}
+                        {%if user in session%}
+                            <li><a href="{{ url_for('home.logout') }}" class="nav-link">Logout</a></li>
+                        {% else %}
+                        <li><a href="{{ url_for('home.login') }}" class="nav-link">Login</a></li>
+                        <li><a href="{{ url_for('home.register') }}" class="nav-link">Register</a></li>
+                        {% endif %}
+                    {% else %}
+                    <li><a href="{{ url_for('home.login') }}" class="nav-link">Login</a></li>
+                    <li><a href="{{ url_for('home.register') }}" class="nav-link">Register</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
+    <script src="{{ url_for('static', filename='js/jquery.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+</body>
+</html>

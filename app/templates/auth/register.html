@@ -1,0 +1,135 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <div class="card">
+                <div class="card-header bg-light">Register</div>
+                <div class="card-body">
+                    {% with messages = get_flashed_messages(with_categories=true) %}
+                        {% if messages %}
+                        {% for category, message in messages %}
+                            <div class="alert alert-{{ category }}">
+                            {{ message }}
+                            </div>
+                        {% endfor %}
+                        {% endif %}
+                    {% endwith %}
+                    <form action="/register" method="POST" autocomplete="off">
+                        <div class="form-group row">
+                            <label for="name" class="col-sm-4 col-form-label text-md-right">Username</label>
+                            <div class="col-md-6">
+                                    {% if errors_u %}
+                                    <input id="name" type="text" class="form-control is-invalid" name="username" required>
+                                    <ul class="invalid-feedback">
+                                        {% for error in errors_u %}
+                                            <li>{{ error }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                {% else %}
+                                    <input id="name" type="text" class="form-control" name="username" required>
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="first_name" class="col-sm-4 col-form-label text-md-right">Firstname</label>
+                            <div class="col-md-6">
+                                {% if errors_f %}
+                                    <input id="first_name" type="text" class="form-control is-invalid" name="firstname" required>
+                                    <ul class="invalid-feedback">
+                                        {% for error in errors_f %}
+                                            <li>{{ error }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                {% else %}
+                                    <input id="first_name" type="text" class="form-control" name="firstname" required>
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="last_name" class="col-sm-4 col-form-label text-md-right">Lastname</label>
+                            <div class="col-md-6">
+                                {% if errors_l %}
+                                    <input id="last_name" type="text" class="form-control is-invalid" name="lastname" required>
+                                    <ul class="invalid-feedback">
+                                        {% for error in errors_l %}
+                                            <li>{{ error }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                {% else %}
+                                    <input id="last_name" type="text" class="form-control" name="lastname" required>
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="email" class="col-sm-4 col-form-label text-md-right">Email</label>
+                            <div class="col-md-6">
+                                {% if errors_e %}
+                                    <input id="email" type="email" class="form-control is-invalid" name="email" required>
+                                    <ul class="invalid-feedback">
+                                        {% for error in errors_e %}
+                                            <li>{{ error }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                {% else %}
+                                    <input id="email" type="text" class="form-control" name="email" required>
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="password" class="col-sm-4 col-form-label text-md-right">Password</label>
+                            <div class="col-md-6">
+                                {% if errors_p %}
+                                    <input id="password" type="password" class="form-control is-invalid" name="password" required>
+                                    <ul class="invalid-feedback">
+                                        {% for error in errors_p %}
+                                            <li>{{ error }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                {% else %}
+                                    <input id="password" type="password" class="form-control" name="password" required>
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="password_confirm" class="col-sm-4 col-form-label text-md-right">Confirm password</label>
+                            <div class="col-md-6">
+                                {% if errors_p %}
+                                    <input id="password_confirm" type="password" class="form-control is-invalid" name="password_confirm" required>
+                                    <ul class="invalid-feedback">
+                                        {% for error in errors_p %}
+                                            <li>{{ error }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                {% else %}
+                                    <input id="password_confirm" type="password" class="form-control" name="password_confirm" required>
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        <div class="form-group row mb-4">
+                            <div class="col-md-6 offset-md-4">
+                                <button type="submit" class="btn btn-primary">
+                                    Register
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-12 col-lg-10 offset-lg-1 col-xl-8 offset-xl-2">
+                                <p class="text-center mb-4">
+                                    Or Use Social Logins to Register
+                                </p>
+                               {% include 'partials/_social-icons.html' %}
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

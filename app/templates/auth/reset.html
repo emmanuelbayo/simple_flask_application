@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header bg-light">Reset Password</div>
+            <div class="card-body">
+                <form action="" method="POST">
+                    <div class="form-group row">
+                        <label for="password" class="col-sm-4 col-form-label text-md-right">Password</label>
+                        <div class="col-md-6">
+                            {% if errors_p %}
+                                <input type="password" id="password" class="form-control is-invalid" name="password" required>
+                                <ul class="invalid-feedback">
+                                    {% for error in errors_p %}
+                                        <li>{{ error }}</li>
+                                    {% endfor %}
+                                </ul>
+                            {% else %}
+                            <input type="password" id="password" class="form-control" name="password" required>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="password_confirm" class="col-sm-4 col-form-label text-md-right">Confirm password</label>
+                        <div class="col-md-6">
+                            {% if errors_p %}
+                            <input type="password" id="password_confirm" class="form-control is-invalid" name="password_confirm" required>
+                                <ul class="invalid-feedback">
+                                    {% for error in errors_p %}
+                                        <li>{{ error }}</li>
+                                    {% endfor %}
+                                </ul>
+                            {% else %}
+                            <input type="password" id="password_confirm" class="form-control" name="password_confirm" required>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="form-group row mb-0">
+                        <div class="col-md-6 offset-md-4">
+                            <button type="submit" class="btn btn-primary">
+                                Reset Password
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
