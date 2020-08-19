@@ -1,5 +1,5 @@
 import os
 
 def setvar():
-    os.environ['EMAIL_USER']='test.application.flask.2020@gmail.com'
-    os.environ['EMAIL_PASSWORD']='Nono@012369'
+    os.environ['EMAIL_USER']='YOUR_EMAIL@GMAIL.COM'
+    os.environ['EMAIL_PASSWORD']='YOUR PASSWORD'

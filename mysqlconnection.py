@@ -6,9 +6,9 @@ class MySQLConnection(object):
 
         config = {
             'host':'localhost',
-            'database':'flask_db',
-            'user': 'Patrick',
-            'password':'Nono@012369'
+            'database':'DBNAME',
+            'user': 'DBUSER',
+            'password':'DBPASSWORD'
         }
 
         DATABASE_URI="mysql://{}:{}@{}/{}".format(config['user'],config['password'],config['host'],config['database'])
